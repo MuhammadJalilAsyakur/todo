@@ -6,7 +6,6 @@ function TodoList() {
     const [inputText, setInputText] = useState("");
     const [editingTodo, setEditingTodo] = useState(null);
 
-    // Mengambil data dari localStorage saat komponen dimuat
     useEffect(() => {
         const storedTodos = localStorage.getItem("todos");
         if (storedTodos) {
@@ -14,7 +13,6 @@ function TodoList() {
         }
     }, [setTodos]);
 
-    // Menyimpan data ke localStorage setiap kali todos berubah
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
@@ -27,14 +25,12 @@ function TodoList() {
         e.preventDefault();
 
         if (editingTodo) {
-            // Update todo jika sedang dalam mode edit
             const updatedTodos = todos.map((todo) =>
                 todo.id === editingTodo.id ? { ...todo, text: inputText } : todo
             );
             setTodos(updatedTodos);
             setEditingTodo(null);
         } else {
-            // Tambahkan todo baru jika tidak dalam mode edit
             const newTodo = {
                 id: todos.length + 1,
                 text: inputText,
@@ -46,23 +42,23 @@ function TodoList() {
         setInputText("");
     }
 
-    function handleEdit (todo) {
+    function handleEdit(todo) {
         setInputText(todo.text);
-        setEditingTodo (todo);
+        setEditingTodo(todo);
     }
 
-    
-  function handleUpdate() {
-    // Fungsi handleUpdate dipanggil saat tombol Update ditekan
-    handleSubmit({ preventDefault: () => {} }); // Panggil handleSubmit untuk menyimpan perubahan
-  }
 
-  
-  function handleDelete(todo) {
-    const updatedTodos = todos.filter((t) => t.id !== todo.id);
-    setTodos(updatedTodos);
-    setEditingTodo(null);
-  }
+    function handleUpdate() {
+        // Fungsi handleUpdate dipanggil saat tombol Update ditekan
+        handleSubmit({ preventDefault: () => { } }); // Panggil handleSubmit untuk menyimpan perubahan
+    }
+
+
+    function handleDelete(todo) {
+        const updatedTodos = todos.filter((tod) => tod.id !== todo.id);
+        setTodos(updatedTodos);
+        setEditingTodo(null);
+    }
 
     return (
         <div>
@@ -72,18 +68,26 @@ function TodoList() {
                     value={inputText}
                     onChange={handleInput}
                     key="todoInput"
-                    className="border-[1px]"
+                    className="border-[1px]
+                    border-gray-400 rounded
+                    w-48 h-10"
                 />
-                <button type="submit"> {editingTodo ? 'Update Todo' : 'Add Todo'}
-            </button>
+                <button type="submit" 
+                className="border-[1px]
+                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                > {editingTodo ? 'Update Todo' : 'Add Todo'}
+                </button>
             </form>
-            <ul className="w-48">
+            <ul>
                 {todos.map((todo) => (
-                    <div key={todo.id} className="flex justify-between border-[1px]">
-                        <span>{todo.text}</span>
+                    <div key={todo.id} className="w-[500px] flex justify-between">
+                        <span className="border-red-300 border-2">{todo.text}</span>
                         <div>
-                            <button onClick={() => handleEdit (todo) }>✏️</button>
-                            <button onClick={() => handleDelete(todo)}>❎</button>
+                            <button onClick={() => handleEdit(todo)}
+                            className="border-[1px]  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                            >✏️</button>
+                            <button onClick={() => handleDelete(todo)}
+                            className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">❎</button>
                         </div>
                     </div>
                 ))}
