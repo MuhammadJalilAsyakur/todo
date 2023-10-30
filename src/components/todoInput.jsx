@@ -7,16 +7,15 @@ function TodoInput({ setTodos, editingTodo, setEditingTodo }) {
     function handleInput(e) {
         setInputText(e.target.value);
     }
-
     function handleSubmit(e) {
         e.preventDefault();
 
         if (!inputText) {
-            return alert('Todo cannot be empty')
+            return alert("Todo cannot be empty");
         }
 
         if (editingTodo) {
-            const updatedTodos = setTodos((prevTodos) =>
+            setTodos((prevTodos) =>
                 prevTodos.map((todo) =>
                     todo.id === editingTodo.id ? { ...todo, text: inputText } : todo
                 )

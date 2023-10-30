@@ -37,11 +37,10 @@ function TodoList() {
         );
         setTodos(updatedTodos);
     }
-
     const filteredTodos = todos.filter((todo) => {
-        if(filter === 'active') {
+        if (filter === "active") {
             return !todo.isCompleted;
-        } else if (filter === 'completed'){
+        } else if (filter === "completed") {
             return todo.isCompleted;
         } else {
             return true;
@@ -49,9 +48,9 @@ function TodoList() {
     });
 
     return (
-        <div className="flex-col space-y-7  my-16 mx-auto w-96 bg-sky-300 rounded-md shadow-md">
+        <div className="flex-col space-y-7  my-16 mx-auto w-96 p-4 rounded-md shadow-md">
             <div className="flex justify-center">
-                <h1>Todo</h1>
+                <h1 className="font-black text-emerald-800">Todo</h1>
             </div>
             <TodoInput setTodos={setTodos} editingTodo={editingTodo} setEditingTodo={setEditingTodo} />
             <TodoListFilters filter={filter} setFilter={setFilter} />
