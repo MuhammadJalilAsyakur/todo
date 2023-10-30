@@ -21,7 +21,8 @@ function TodoListItems({ todos, handleCheckboxChange, handleEdit, handleDelete }
                             className=" hover:bg-blue-700 text-emerald-300 font-bold py-2 px-4 rounded"
                         ><Icon icon="line-md:cog-filled-loop" /></button>
                         <button onClick={() => handleDelete(todo)}
-                            className="bg-red-600 hover-bg-red-700 font-bold py-2 px-4 rounded">❎</button>
+                            className= "hover:bg-emerald-500 text-rose-600 font-bold py-2 px-4 rounded">
+                                <Icon icon="line-md:close-circle" /></button>
                     </div>
                 </div>
             ))}

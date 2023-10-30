@@ -41,7 +41,7 @@ function TodoInput({ setTodos, editingTodo, setEditingTodo }) {
                 type="text"
                 value={inputText}
                 onChange={handleInput}
-                className=" border-gray-400 rounded w-9/12 h-10"
+                className=" border-gray-400 border-[1px] rounded w-9/12 h-10"
             />
             <button
                 type="submit"

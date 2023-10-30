@@ -50,7 +50,7 @@ function TodoList() {
     return (
         <div className="flex-col space-y-7  my-16 mx-auto w-96 p-4 rounded-md shadow-md">
             <div className="flex justify-center">
-                <h1 className="font-black text-emerald-800">Todo</h1>
+                <h1 className="font-black text-emerald-800">Apa yang kamu rencana kan hari ini bang?</h1>
             </div>
             <TodoInput setTodos={setTodos} editingTodo={editingTodo} setEditingTodo={setEditingTodo} />
             <TodoListFilters filter={filter} setFilter={setFilter} />
